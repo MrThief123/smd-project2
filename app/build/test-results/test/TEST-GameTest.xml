@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="GameTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-05-24T03:59:17.992Z" hostname="Shwethans-MacBook-Pro.local" time="1036.995">
+<testsuite name="GameTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-05-24T06:36:54.244Z" hostname="Ishans-MacBook-Pro.local" time="681.896">
   <properties/>
-  <testcase name="test2Feature2" classname="GameTest" time="73.488"/>
-  <testcase name="test4Feature3" classname="GameTest" time="82.073"/>
-  <testcase name="test1Feature1" classname="GameTest" time="77.273"/>
-  <testcase name="test3Feature2" classname="GameTest" time="195.153"/>
-  <testcase name="test5Feature3" classname="GameTest" time="609.005"/>
+  <testcase name="test2Feature2" classname="GameTest" time="106.823"/>
+  <testcase name="test4Feature3" classname="GameTest" time="194.913"/>
+  <testcase name="test1Feature1" classname="GameTest" time="148.738"/>
+  <testcase name="test3Feature2" classname="GameTest" time="150.269"/>
+  <testcase name="test5Feature3" classname="GameTest" time="81.144"/>
   <system-out><![CDATA[hands[0]: [6S,5S,4S,3S,11H,7H,3H,12D,3D,2D,7C,6C]
 hands[1]: [10S,12H,10H,6H,11D,4D,13C,11C,10C,9C,5C,3C]
 hands[2]: [13S,11S,9S,2S,9H,4H,2H,13D,8D,12C,4C,2C]

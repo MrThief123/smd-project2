@@ -1,5 +1,9 @@
 package thrones.game;
+
 import ch.aplu.jcardgame.Card;
+import ch.aplu.jcardgame.Hand;
+
+import java.util.List;
 
 public class MoveCandidate {
 
@@ -33,5 +37,29 @@ public class MoveCandidate {
 
     public SmartMove toSmartMove() {
         return SmartMove.play(card, pileIndex);
+    }
+
+    /**
+     * Computes the effect value of playing {@code current} on {@code targetPile},
+     * applying the doubled-effect rule when {@code current}'s rank equals the
+     * rank of the pile's top card.
+     */
+    public static int calculateEffect(Card current, Hand targetPile) {
+        int currentValue = ((Rank) current.getRank()).getScoreValue();
+
+        List<Card> pileCards = targetPile.getCardList();
+
+        if (pileCards.isEmpty()) {
+            return currentValue;
+        }
+
+        Card previous = pileCards.get(pileCards.size() - 1);
+        int previousValue = ((Rank) previous.getRank()).getScoreValue();
+
+        if (currentValue == previousValue) {
+            return currentValue * 2;
+        }
+
+        return currentValue;
     }
 }

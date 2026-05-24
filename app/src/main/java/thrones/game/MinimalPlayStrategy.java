@@ -1,18 +1,22 @@
 package thrones.game;
 
+import ch.aplu.jcardgame.Card;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Smart-bot strategy for Minimal Play Mode.
  *
- * Used after the smart bot passed on its previous turn.
+ * Used after the smart bot passed on its previous turn. Selects a legal card
+ * with the smallest effect; on a tie, applies the priority: diamond-to-opponent
+ * &gt; attack-to-team &gt; defence-to-team (spec 3.3, p.10).
  */
 public class MinimalPlayStrategy implements SmartMoveStrategy {
-    private final SmartMoveEvaluator evaluator = new SmartMoveEvaluator();
 
     @Override
     public SmartMove chooseMove(SmartBotContext context) {
-        List<MoveCandidate> candidates = evaluator.getMinimalPlayCandidates(context);
+        List<MoveCandidate> candidates = collectCandidates(context);
 
         if (candidates.isEmpty()) {
             return SmartMove.pass();
@@ -27,6 +31,62 @@ public class MinimalPlayStrategy implements SmartMoveStrategy {
         }
 
         return best.toSmartMove();
+    }
+
+    private List<MoveCandidate> collectCandidates(SmartBotContext context) {
+        List<MoveCandidate> candidates = new ArrayList<>();
+
+        for (Card card : context.getHand().getCardList()) {
+            Suit suit = (Suit) card.getSuit();
+
+            if (suit.isCharacter()) {
+                continue;
+            }
+
+            if (suit.isMagic()
+                    && context.getOpponentAttributes().getLastAffected()
+                    != PileAttributes.AffectedAttribute.NONE) {
+
+                int effect = MoveCandidate.calculateEffect(card, context.getOpponentPile());
+
+                MoveCategory category;
+                if (context.getOpponentAttributes().getLastAffected()
+                        == PileAttributes.AffectedAttribute.ATTACK) {
+                    category = MoveCategory.DECREASE_OPPONENT_ATTACK;
+                } else {
+                    category = MoveCategory.DECREASE_OPPONENT_DEFENCE;
+                }
+
+                candidates.add(new MoveCandidate(
+                        card,
+                        context.getOpponentPileIndex(),
+                        effect,
+                        category
+                ));
+            }
+
+            if (suit.isAttack()) {
+                int effect = MoveCandidate.calculateEffect(card, context.getOwnPile());
+                candidates.add(new MoveCandidate(
+                        card,
+                        context.getOwnPileIndex(),
+                        effect,
+                        MoveCategory.INCREASE_OWN_ATTACK
+                ));
+            }
+
+            if (suit.isDefence()) {
+                int effect = MoveCandidate.calculateEffect(card, context.getOwnPile());
+                candidates.add(new MoveCandidate(
+                        card,
+                        context.getOwnPileIndex(),
+                        effect,
+                        MoveCategory.INCREASE_OWN_DEFENCE
+                ));
+            }
+        }
+
+        return candidates;
     }
 
     private boolean isBetter(MoveCandidate candidate, MoveCandidate best) {
