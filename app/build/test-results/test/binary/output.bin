@@ -22,19 +22,24 @@
 7hands[1]: [10S,4S,12H,10H,6H,11D,4D,13C,11C,10C,9C,3C]
 3hands[2]: [13S,9S,2S,9H,4H,2H,13D,8D,12C,5C,4C,2C]
 3hands[3]: [12S,8S,7S,13H,8H,5H,10D,9D,7D,6D,5D,8C]
-%pile north: [3H,6S,12C,6D,7C,11D,5C]
-%pile north is Attack: 9 - Defence: 9
- pile south: [6H,13S,7S,10S,12S]
-&pile south is Attack: 6 - Defence: 53
+VDEBUG before smart context: player=2, pileOwners=[0, 1], piles[0]=[3H], piles[1]=[6H]
+dDEBUG before smart context: player=2, pileOwners=[0, 1], piles[0]=[3H,12C,6S], piles[1]=[6H,7S,10S]
+rDEBUG before smart context: player=2, pileOwners=[0, 1], piles[0]=[3H,12C,6S,6D,7C,11D], piles[1]=[6H,7S,10S,13D]
+&pile north: [3H,12C,6S,6D,7C,11D,13S]
+'pile north is Attack: 10 - Defence: 20
+ pile south: [6H,7S,10S,13D,12S]
+&pile south is Attack: 6 - Defence: 23
 *Character 0 attack on character 1 failed.
 'Character 1 attack character 0 failed.
-pile north: [6C,5S,13D,10D]
-%pile north is Attack: 6 - Defence: 0
-)pile south: [10H,4H,8C,4S,9S,8S,11C,12D]
-&pile south is Attack: 8 - Defence: 31
+`DEBUG before smart context: player=2, pileOwners=[2, 1], piles[0]=[2H,6C], piles[1]=[10H,8C,4S]
+mDEBUG before smart context: player=2, pileOwners=[2, 1], piles[0]=[2H,6C,5S], piles[1]=[10H,8C,4S,8D,8S,11C]
+pile north: [2H,6C,5S,5C,10D]
+%pile north is Attack: 8 - Defence: 7
+&pile south: [10H,8C,4S,8D,8S,11C,12D]
+&pile south is Attack: 8 - Defence: 22
 *Character 0 attack on character 1 failed.
 -Character 1 attack on character 0 succeeded.
-Result: Players 0 and 2 won.
+Result: Players 1 and 3 won.
 2hands[0]: [6S,5S,4S,3S,11H,7H,3H,12D,3D,2D,7C,6C]
 7hands[1]: [10S,12H,10H,6H,11D,4D,13C,11C,10C,9C,5C,3C]
 4hands[2]: [13S,11S,9S,2S,9H,4H,2H,13D,8D,12C,4C,2C]
@@ -75,3 +80,24 @@
 7hands[1]: [10S,12H,10H,6H,11D,4D,13C,11C,10C,7C,5C,2C]
 2hands[2]: [13S,9S,5S,4S,2S,9H,4H,2H,13D,8D,7D,4C]
 4hands[3]: [12S,8S,7S,13H,8H,5H,10D,9D,6D,5D,12C,8C]
+VDEBUG before smart context: player=2, pileOwners=[0, 1], piles[0]=[3H], piles[1]=[6H]
+bDEBUG before smart context: player=2, pileOwners=[0, 1], piles[0]=[3H,4C,6C,7C], piles[1]=[6H,8C]
+nDEBUG before smart context: player=2, pileOwners=[0, 1], piles[0]=[3H,4C,6C,7C,6S], piles[1]=[6H,8C,8D,8S,5C]
+. Player2 Pass.
+pile north: [3H,4C,6C,7C,6S]
+&pile north is Attack: 20 - Defence: 9
+ pile south: [6H,8C,8D,8S,5C,7S]
+&pile south is Attack: 5 - Defence: 29
+*Character 0 attack on character 1 failed.
+'Character 1 attack character 0 failed.
+WDEBUG before smart context: player=2, pileOwners=[0, 1], piles[0]=[7H], piles[1]=[10H]
+. Player2 Pass.
+aDEBUG before smart context: player=2, pileOwners=[0, 1], piles[0]=[7H,3C], piles[1]=[10H,12C,2C]
+nDEBUG before smart context: player=2, pileOwners=[0, 1], piles[0]=[7H,3C,2S,5D,3S], piles[1]=[10H,12C,2C,10S]
+pile north: [7H,3C,2S,5D,3S]
+&pile north is Attack: 10 - Defence: 7
+%pile south: [10H,12C,2C,10S,13D,12S]
+'pile south is Attack: 32 - Defence: 20
+*Character 0 attack on character 1 failed.
+-Character 1 attack on character 0 succeeded.
+Result: Players 1 and 3 won.

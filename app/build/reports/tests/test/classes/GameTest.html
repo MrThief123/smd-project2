@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">1</div>
+<div class="counter">5</div>
 <p>tests</p>
 </div>
 </td>
@@ -35,13 +35,13 @@
 </td>
 <td>
 <div class="infoBox" id="ignored">
-<div class="counter">1</div>
+<div class="counter">0</div>
 <p>ignored</p>
 </div>
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">2.683s</div>
+<div class="counter">17m16.99s</div>
 <p>duration</p>
 </div>
 </td>
@@ -50,8 +50,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox skipped" id="successRate">
-<div class="percent">-</div>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
 <p>successful</p>
 </div>
 </td>
@@ -61,22 +61,12 @@
 <div class="tab-container">
 <ul class="tabLinks">
 <li>
-<a href="#">Ignored tests</a>
-</li>
-<li>
 <a href="#">Tests</a>
 </li>
 <li>
 <a href="#">Standard output</a>
 </li>
 </ul>
-<div class="tab">
-<h2>Ignored tests</h2>
-<div class="test">
-<a name="test2Feature2"></a>
-<h3 class="skipped">test2Feature2</h3>
-</div>
-</div>
 <div class="tab">
 <h2>Tests</h2>
 <table>
@@ -88,9 +78,29 @@
 </tr>
 </thead>
 <tr>
-<td class="skipped">test2Feature2</td>
-<td class="skipped">-</td>
-<td class="skipped">ignored</td>
+<td class="success">test1Feature1</td>
+<td class="success">1m17.27s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">test2Feature2</td>
+<td class="success">1m13.49s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">test3Feature2</td>
+<td class="success">3m15.15s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">test4Feature3</td>
+<td class="success">1m22.07s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">test5Feature3</td>
+<td class="success">10m9.01s</td>
+<td class="success">passed</td>
 </tr>
 </table>
 </div>
@@ -101,6 +111,105 @@
 hands[1]: [10S,12H,10H,6H,11D,4D,13C,11C,10C,9C,5C,3C]
 hands[2]: [13S,11S,9S,2S,9H,4H,2H,13D,8D,12C,4C,2C]
 hands[3]: [12S,8S,7S,13H,8H,5H,10D,9D,7D,6D,5D,8C]
+. Player2 Pass.
+. Player2 Pass.
+pile north: [7H,6C,7C,11D]
+pile north is Attack: 10 - Defence: 7
+pile south: [6H,7S,9C,8S,13D,12S]
+pile south is Attack: 15 - Defence: 31
+Character 0 attack on character 1 failed.
+Character 1 attack on character 0 succeeded.
+. Player2 Pass.
+pile north: [4H,3S,5S,10D]
+pile north is Attack: 4 - Defence: 2
+pile south: [13H,5C,8C,10S,8D,12D,11C]
+pile south is Attack: 43 - Defence: 2
+Character 0 attack on character 1 succeeded.
+Character 1 attack on character 0 succeeded.
+Result: Players 1 and 3 won.
+hands[0]: [11S,6S,5S,3S,11H,7H,3H,12D,3D,2D,7C,6C]
+hands[1]: [10S,4S,12H,10H,6H,11D,4D,13C,11C,10C,9C,3C]
+hands[2]: [13S,9S,2S,9H,4H,2H,13D,8D,12C,5C,4C,2C]
+hands[3]: [12S,8S,7S,13H,8H,5H,10D,9D,7D,6D,5D,8C]
+DEBUG before smart context: player=2, pileOwners=[0, 1], piles[0]=[3H], piles[1]=[6H]
+DEBUG before smart context: player=2, pileOwners=[0, 1], piles[0]=[3H,12C,6S], piles[1]=[6H,7S,10S]
+DEBUG before smart context: player=2, pileOwners=[0, 1], piles[0]=[3H,12C,6S,6D,7C,11D], piles[1]=[6H,7S,10S,13D]
+pile north: [3H,12C,6S,6D,7C,11D,13S]
+pile north is Attack: 10 - Defence: 20
+pile south: [6H,7S,10S,13D,12S]
+pile south is Attack: 6 - Defence: 23
+Character 0 attack on character 1 failed.
+Character 1 attack character 0 failed.
+DEBUG before smart context: player=2, pileOwners=[2, 1], piles[0]=[2H,6C], piles[1]=[10H,8C,4S]
+DEBUG before smart context: player=2, pileOwners=[2, 1], piles[0]=[2H,6C,5S], piles[1]=[10H,8C,4S,8D,8S,11C]
+pile north: [2H,6C,5S,5C,10D]
+pile north is Attack: 8 - Defence: 7
+pile south: [10H,8C,4S,8D,8S,11C,12D]
+pile south is Attack: 8 - Defence: 22
+Character 0 attack on character 1 failed.
+Character 1 attack on character 0 succeeded.
+Result: Players 1 and 3 won.
+hands[0]: [6S,5S,4S,3S,11H,7H,3H,12D,3D,2D,7C,6C]
+hands[1]: [10S,12H,10H,6H,11D,4D,13C,11C,10C,9C,5C,3C]
+hands[2]: [13S,11S,9S,2S,9H,4H,2H,13D,8D,12C,4C,2C]
+hands[3]: [12S,8S,7S,13H,8H,5H,10D,9D,7D,6D,5D,8C]
+pile north: [9H,9S,6C,11D,7C]
+pile north is Attack: 12 - Defence: 27
+pile south: [6H,7S,6S,9C,8S,13D,12S]
+pile south is Attack: 15 - Defence: 37
+Character 0 attack on character 1 failed.
+Character 1 attack character 0 failed.
+pile north: [4H,3S,11S,5S,13S,10D]
+pile north is Attack: 4 - Defence: 12
+pile south: [13H,5C,8C,10S,12D,11C]
+pile south is Attack: 43 - Defence: 0
+Character 0 attack on character 1 succeeded.
+Character 1 attack on character 0 succeeded.
+Result: Players 0 and 2 won.
+hands[0]: [6S,5S,4S,3S,11H,7H,3H,13D,12D,3D,7C,6C]
+hands[1]: [10S,12H,10H,6H,11D,4D,13C,11C,10C,9C,5C,3C]
+hands[2]: [13S,11S,9S,2S,9H,4H,2H,8D,2D,12C,4C,2C]
+hands[3]: [12S,8S,7S,13H,8H,5H,10D,9D,7D,6D,5D,8C]
+. Player2 Pass.
+. Player2 Pass.
+pile north: [7H,6C,7C,11D,12C]
+pile north is Attack: 30 - Defence: 7
+pile south: [6H,7S,9C,8S,12S]
+pile south is Attack: 15 - Defence: 31
+Character 0 attack on character 1 failed.
+Character 1 attack on character 0 succeeded.
+pile north: [4H,3S,11S,5S,2C,10D]
+pile north is Attack: 0 - Defence: 22
+pile south: [13H,5C,8C,10S,12D,11C]
+pile south is Attack: 43 - Defence: 0
+Character 0 attack on character 1 failed.
+Character 1 attack on character 0 succeeded.
+Result: Players 1 and 3 won.
+hands[0]: [11S,6S,3S,11H,7H,3H,12D,3D,2D,9C,6C,3C]
+hands[1]: [10S,12H,10H,6H,11D,4D,13C,11C,10C,7C,5C,2C]
+hands[2]: [13S,9S,5S,4S,2S,9H,4H,2H,13D,8D,7D,4C]
+hands[3]: [12S,8S,7S,13H,8H,5H,10D,9D,6D,5D,12C,8C]
+DEBUG before smart context: player=2, pileOwners=[0, 1], piles[0]=[3H], piles[1]=[6H]
+DEBUG before smart context: player=2, pileOwners=[0, 1], piles[0]=[3H,4C,6C,7C], piles[1]=[6H,8C]
+DEBUG before smart context: player=2, pileOwners=[0, 1], piles[0]=[3H,4C,6C,7C,6S], piles[1]=[6H,8C,8D,8S,5C]
+. Player2 Pass.
+pile north: [3H,4C,6C,7C,6S]
+pile north is Attack: 20 - Defence: 9
+pile south: [6H,8C,8D,8S,5C,7S]
+pile south is Attack: 5 - Defence: 29
+Character 0 attack on character 1 failed.
+Character 1 attack character 0 failed.
+DEBUG before smart context: player=2, pileOwners=[0, 1], piles[0]=[7H], piles[1]=[10H]
+. Player2 Pass.
+DEBUG before smart context: player=2, pileOwners=[0, 1], piles[0]=[7H,3C], piles[1]=[10H,12C,2C]
+DEBUG before smart context: player=2, pileOwners=[0, 1], piles[0]=[7H,3C,2S,5D,3S], piles[1]=[10H,12C,2C,10S]
+pile north: [7H,3C,2S,5D,3S]
+pile north is Attack: 10 - Defence: 7
+pile south: [10H,12C,2C,10S,13D,12S]
+pile south is Attack: 32 - Defence: 20
+Character 0 attack on character 1 failed.
+Character 1 attack on character 0 succeeded.
+Result: Players 1 and 3 won.
 </pre>
 </span>
 </div>
@@ -112,7 +221,7 @@ hands[3]: [12S,8S,7S,13H,8H,5H,10D,9D,7D,6D,5D,8C]
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="https://www.gradle.org">Gradle 9.0.0</a> at 24 May 2026, 11:21:32 am</p>
+<a href="https://www.gradle.org">Gradle 9.0.0</a> at 24 May 2026, 2:16:35 pm</p>
 </div>
 </div>
 </body>

@@ -97,6 +97,7 @@ public class GameOfThrones extends CardGame {
     Font smallFont = new Font("Arial", Font.PLAIN, 10);
     PlayerType[] playerTypes = { PlayerType.HUMAN, PlayerType.HUMAN,  PlayerType.HUMAN, PlayerType.HUMAN };
     private final LegalPlayer[] legalPlayers = new LegalPlayer[4];
+    private final SmartPlayer[] smartPlayers = new SmartPlayer[4];
     private int currentPlay = 0;
     private List<Integer> firstPlayers = new ArrayList<>();
     private int NUMBER_OF_PLAYS = 2;
@@ -154,6 +155,11 @@ public class GameOfThrones extends CardGame {
                         ConsiderationFactory.parse(configurationString)
                 );
             }
+
+            if (playerTypes[i] == PlayerType.SMART) {
+                smartPlayers[i] = new SmartPlayer();
+            }
+
         }
 
         for (int i = 0; i < NUMBER_OF_PLAYS; i++) {
@@ -557,7 +563,7 @@ public class GameOfThrones extends CardGame {
     }
 
     private int getPlayerIndex(int index) {
-        return index % nbPlayers;
+        return Math.floorMod(index, nbPlayers);
     }
 
     /**
@@ -574,6 +580,84 @@ public class GameOfThrones extends CardGame {
         int owner = pileOwners[pileIndex];
         if (owner < 0) return false; // pile not yet claimed; defensive
         return (playerIndex % 2) == (owner % 2);
+    }
+
+    private int getOwnPileIndex(int playerIndex) {
+        for (int i = 0; i < pileOwners.length; i++) {
+            if (isOwnTeamPile(playerIndex, i)) {
+                return i;
+            }
+        }
+
+        return NON_SELECTION_VALUE;
+    }
+
+    private int getOpponentPileIndex(int playerIndex) {
+        for (int i = 0; i < pileOwners.length; i++) {
+            int owner = pileOwners[i];
+
+            if (owner >= 0 && (owner % 2) != (playerIndex % 2)) {
+                return i;
+            }
+        }
+
+        return NON_SELECTION_VALUE;
+    }
+
+    private int getAvailableCharacterPileIndex(int preferredPileIndex) {
+        if (preferredPileIndex >= 0
+                && preferredPileIndex < piles.length
+                && pileOwners[preferredPileIndex] == NON_SELECTION_VALUE) {
+            return preferredPileIndex;
+        }
+
+        for (int i = 0; i < pileOwners.length; i++) {
+            if (pileOwners[i] == NON_SELECTION_VALUE) {
+                return i;
+            }
+        }
+
+        return NON_SELECTION_VALUE;
+    }
+
+    private SmartBotContext buildSmartBotContext(
+            int playerIndex,
+            boolean characterSelectionRequired,
+            int forcedOwnPileIndex
+    ) {
+        int ownPileIndex;
+        int opponentPileIndex;
+
+        if (characterSelectionRequired) {
+            ownPileIndex = forcedOwnPileIndex;
+            opponentPileIndex = forcedOwnPileIndex == Pile.NORTH.ordinal()
+                    ? Pile.SOUTH.ordinal()
+                    : Pile.NORTH.ordinal();
+        } else {
+            ownPileIndex = getOwnPileIndex(playerIndex);
+            opponentPileIndex = getOpponentPileIndex(playerIndex);
+
+            if (ownPileIndex == NON_SELECTION_VALUE || opponentPileIndex == NON_SELECTION_VALUE) {
+                throw new IllegalStateException(
+                        "Smart bot could not determine pile ownership. " +
+                                "playerIndex=" + playerIndex +
+                                ", pileOwners=" + Arrays.toString(pileOwners) +
+                                ", ownPileIndex=" + ownPileIndex +
+                                ", opponentPileIndex=" + opponentPileIndex
+                );
+            }
+        }
+
+        return new SmartBotContext(
+                playerIndex,
+                hands[playerIndex],
+                piles[ownPileIndex],
+                piles[opponentPileIndex],
+                ownPileIndex,
+                opponentPileIndex,
+                characterSelectionRequired,
+                random
+        );
     }
 
     /**
@@ -614,8 +698,8 @@ public class GameOfThrones extends CardGame {
     }
 
     private void playHeartForCharacters() {
-        // 1: play the first 2 hearts
         nextStartingPlayer = -1;
+
         if (isAuto) {
             if (firstPlayers.size() > currentPlay) {
                 nextStartingPlayer = firstPlayers.get(currentPlay);
@@ -623,52 +707,96 @@ public class GameOfThrones extends CardGame {
         }
 
         if (nextStartingPlayer < 0) {
-            nextStartingPlayer = getPlayerIndex(nextStartingPlayer);
-            if (hands[nextStartingPlayer].getNumberOfCardsWithSuit(Suit.HEARTS) == 0)
+            nextStartingPlayer = 0;
+
+            while (hands[nextStartingPlayer].getNumberOfCardsWithSuit(Suit.HEARTS) == 0) {
                 nextStartingPlayer = getPlayerIndex(nextStartingPlayer + 1);
+            }
         }
 
-        assert hands[nextStartingPlayer].getNumberOfCardsWithSuit(Suit.HEARTS) != 0 : " Starting player has no hearts.";
+        assert hands[nextStartingPlayer].getNumberOfCardsWithSuit(Suit.HEARTS) != 0
+                : " Starting player has no hearts.";
 
         for (int i = 0; i < 2; i++) {
-            int pileIndex = 0;
+            int pileIndex = i % 2;
             selected = Optional.empty();
+            selectedPileIndex = NON_SELECTION_VALUE;
 
             int playerIndex = getPlayerIndex(nextStartingPlayer + i);
             setStatusText("Player " + playerIndex + " select a Heart card to play");
+
             if (isAuto) {
                 if (playerAutoMovements.size() > currentPlay) {
-                    List<List<String>>playersCards = playerAutoMovements.get(currentPlay);
+                    List<List<String>> playersCards = playerAutoMovements.get(currentPlay);
+
                     if (playersCards.size() > playerIndex) {
-                        List<String> movementStrings =  playersCards.get(playerIndex);
+                        List<String> movementStrings = playersCards.get(playerIndex);
                         Hand currentHand = hands[playerIndex];
                         int playerMovementIndex = playerMovementIndexes.get(playerIndex);
+
                         if (movementStrings.size() > playerMovementIndex) {
                             String movementString = movementStrings.get(playerMovementIndex);
                             String[] components = movementString.split("-");
+
                             String cardString = components[0];
-                            pileIndex = Integer.parseInt(components[1]);
-                            selected = Optional.ofNullable(getCardFromList(currentHand.getCardList(), cardString));
-                            playerMovementIndexes.set(playerIndex, playerMovementIndex + 1);
+                            int autoPileIndex = Integer.parseInt(components[1]);
+
+                            Card autoCard = getCardFromList(currentHand.getCardList(), cardString);
+
+                            // During character selection, only consume the auto movement if it is a heart.
+                            // If it is a heart, also respect the pile from the properties file.
+                            // If it is not a heart, leave it for playTurns().
+                            if (autoCard != null && ((Suit) autoCard.getSuit()).isCharacter()) {
+                                selected = Optional.of(autoCard);
+
+                                // Use the auto pile only if it is available.
+                                // Otherwise, force the heart onto the remaining empty character pile.
+                                pileIndex = getAvailableCharacterPileIndex(autoPileIndex);
+
+                                playerMovementIndexes.set(playerIndex, playerMovementIndex + 1);
+                            }
                         }
                     }
                 }
             }
 
             if (selected.isEmpty()) {
-                pileIndex = i % 2;
                 if (playerTypes[playerIndex] == PlayerType.HUMAN) {
                     waitForCorrectSuit(playerIndex, true);
+
+                } else if (playerTypes[playerIndex] == PlayerType.SMART) {
+                    SmartBotContext context = buildSmartBotContext(
+                            playerIndex,
+                            true,
+                            pileIndex
+                    );
+
+                    SmartMove move = smartPlayers[playerIndex].chooseMove(context);
+
+                    if (!move.isPass()) {
+                        selected = Optional.of(move.getCard());
+                    }
+
                 } else {
                     pickACorrectSuit(playerIndex, true);
                 }
             }
 
             assert selected.isPresent() : " Pass returned on selection of character.";
+
+// Safety check: character piles must be distinct.
+// If the chosen pile is already owned, place the heart on the remaining empty pile.
+            pileIndex = getAvailableCharacterPileIndex(pileIndex);
+
+            if (pileIndex == NON_SELECTION_VALUE) {
+                throw new IllegalStateException(
+                        "No available character pile. pileOwners=" + Arrays.toString(pileOwners)
+                );
+            }
+
             selected.get().setVerso(false);
             selected.get().transfer(piles[pileIndex], true);
 
-            // The player who plays the heart owns this pile
             pileOwners[pileIndex] = playerIndex;
 
             logger.logPlayerMovement(playerIndex, selected.get(), pileIndex);
@@ -682,6 +810,7 @@ public class GameOfThrones extends CardGame {
 
         while (remainingTurns > 0) {
             selected = Optional.empty();
+            selectedPileIndex = NON_SELECTION_VALUE;
             boolean moveWasProvided = false;
 
             nextPlayer = getPlayerIndex(nextPlayer);
@@ -728,22 +857,53 @@ public class GameOfThrones extends CardGame {
 
                 if (playerTypes[nextPlayer] == PlayerType.HUMAN) {
                     waitForCorrectSuit(nextPlayer, false);
-                } else {
-                    pickACorrectSuit(nextPlayer, false);
-                }
 
-                if (selected.isPresent()) {
-                    setStatusText("Selected: " + canonical(selected.get()) +
-                            ". Player" + nextPlayer +
-                            " select a pile to play the card.");
+                    if (selected.isPresent()) {
+                        setStatusText("Selected: " + canonical(selected.get()) +
+                                ". Player" + nextPlayer +
+                                " select a pile to play the card.");
 
-                    if (playerTypes[nextPlayer] == PlayerType.HUMAN) {
                         waitForPileSelection();
-                    } else {
-                        selectRandomPile();
                     }
 
-                    applyLegalBotDecision(nextPlayer);
+                } else if (playerTypes[nextPlayer] == PlayerType.SMART) {
+
+                    System.out.println("DEBUG before smart context: player=" + nextPlayer
+                            + ", pileOwners=" + Arrays.toString(pileOwners)
+                            + ", piles[0]=" + canonical(piles[0])
+                            + ", piles[1]=" + canonical(piles[1]));
+
+                    SmartBotContext context = buildSmartBotContext(
+                            nextPlayer,
+                            false,
+                            NON_SELECTION_VALUE
+                    );
+
+                    SmartMove move = smartPlayers[nextPlayer].chooseMove(context);
+
+                    if (move.isPass()) {
+                        selected = Optional.empty();
+                    } else {
+                        selected = Optional.of(move.getCard());
+                        selectedPileIndex = move.getPileIndex();
+
+                        setStatusText("Selected: " + canonical(selected.get()) +
+                                ". Player" + nextPlayer +
+                                " select a pile " + selectedPileIndex +
+                                " to play the card.");
+                    }
+
+                } else {
+                    pickACorrectSuit(nextPlayer, false);
+
+                    if (selected.isPresent()) {
+                        setStatusText("Selected: " + canonical(selected.get()) +
+                                ". Player" + nextPlayer +
+                                " select a pile to play the card.");
+
+                        selectRandomPile();
+                        applyLegalBotDecision(nextPlayer);
+                    }
                 }
             }
 
@@ -834,6 +994,12 @@ public class GameOfThrones extends CardGame {
         int[] pileSouthRanks = calculatePileRanks(Pile.SOUTH.ordinal());
         updateScoreForPlayers(pileNorthRanks, pileSouthRanks);
         logger.logScores(pileNorthRanks, pileSouthRanks, scores);
+
+        for (SmartPlayer smartPlayer : smartPlayers) {
+            if (smartPlayer != null) {
+                smartPlayer.resetForNewPlay();
+            }
+        }
 
         nextStartingPlayer += 1;
         currentPlay++;

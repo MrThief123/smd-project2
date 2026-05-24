@@ -1,0 +1,8 @@
+package thrones.game;
+
+public enum MoveCategory {
+    INCREASE_OWN_ATTACK,
+    DECREASE_OPPONENT_DEFENCE,
+    INCREASE_OWN_DEFENCE,
+    DECREASE_OPPONENT_ATTACK
+}
