@@ -1,0 +1,77 @@
+2hands[0]: [6S,5S,4S,3S,11H,7H,3H,12D,3D,2D,7C,6C]
+7hands[1]: [10S,12H,10H,6H,11D,4D,13C,11C,10C,9C,5C,3C]
+4hands[2]: [13S,11S,9S,2S,9H,4H,2H,13D,8D,12C,4C,2C]
+3hands[3]: [12S,8S,7S,13H,8H,5H,10D,9D,7D,6D,5D,8C]
+. Player2 Pass.
+. Player2 Pass.
+pile north: [7H,6C,7C,11D]
+&pile north is Attack: 10 - Defence: 7
+"pile south: [6H,7S,9C,8S,13D,12S]
+'pile south is Attack: 15 - Defence: 31
+*Character 0 attack on character 1 failed.
+-Character 1 attack on character 0 succeeded.
+. Player2 Pass.
+pile north: [4H,3S,5S,10D]
+%pile north is Attack: 4 - Defence: 2
+'pile south: [13H,5C,8C,10S,8D,12D,11C]
+&pile south is Attack: 43 - Defence: 2
+-Character 0 attack on character 1 succeeded.
+-Character 1 attack on character 0 succeeded.
+Result: Players 1 and 3 won.
+3hands[0]: [11S,6S,5S,3S,11H,7H,3H,12D,3D,2D,7C,6C]
+7hands[1]: [10S,4S,12H,10H,6H,11D,4D,13C,11C,10C,9C,3C]
+3hands[2]: [13S,9S,2S,9H,4H,2H,13D,8D,12C,5C,4C,2C]
+3hands[3]: [12S,8S,7S,13H,8H,5H,10D,9D,7D,6D,5D,8C]
+%pile north: [3H,6S,12C,6D,7C,11D,5C]
+%pile north is Attack: 9 - Defence: 9
+ pile south: [6H,13S,7S,10S,12S]
+&pile south is Attack: 6 - Defence: 53
+*Character 0 attack on character 1 failed.
+'Character 1 attack character 0 failed.
+pile north: [6C,5S,13D,10D]
+%pile north is Attack: 6 - Defence: 0
+)pile south: [10H,4H,8C,4S,9S,8S,11C,12D]
+&pile south is Attack: 8 - Defence: 31
+*Character 0 attack on character 1 failed.
+-Character 1 attack on character 0 succeeded.
+Result: Players 0 and 2 won.
+2hands[0]: [6S,5S,4S,3S,11H,7H,3H,12D,3D,2D,7C,6C]
+7hands[1]: [10S,12H,10H,6H,11D,4D,13C,11C,10C,9C,5C,3C]
+4hands[2]: [13S,11S,9S,2S,9H,4H,2H,13D,8D,12C,4C,2C]
+3hands[3]: [12S,8S,7S,13H,8H,5H,10D,9D,7D,6D,5D,8C]
+pile north: [9H,9S,6C,11D,7C]
+'pile north is Attack: 12 - Defence: 27
+%pile south: [6H,7S,6S,9C,8S,13D,12S]
+'pile south is Attack: 15 - Defence: 37
+*Character 0 attack on character 1 failed.
+'Character 1 attack character 0 failed.
+#pile north: [4H,3S,11S,5S,13S,10D]
+&pile north is Attack: 4 - Defence: 12
+$pile south: [13H,5C,8C,10S,12D,11C]
+&pile south is Attack: 43 - Defence: 0
+-Character 0 attack on character 1 succeeded.
+-Character 1 attack on character 0 succeeded.
+Result: Players 0 and 2 won.
+3hands[0]: [6S,5S,4S,3S,11H,7H,3H,13D,12D,3D,7C,6C]
+7hands[1]: [10S,12H,10H,6H,11D,4D,13C,11C,10C,9C,5C,3C]
+3hands[2]: [13S,11S,9S,2S,9H,4H,2H,8D,2D,12C,4C,2C]
+3hands[3]: [12S,8S,7S,13H,8H,5H,10D,9D,7D,6D,5D,8C]
+. Player2 Pass.
+. Player2 Pass.
+pile north: [7H,6C,7C,11D,12C]
+&pile north is Attack: 30 - Defence: 7
+pile south: [6H,7S,9C,8S,12S]
+'pile south is Attack: 15 - Defence: 31
+*Character 0 attack on character 1 failed.
+-Character 1 attack on character 0 succeeded.
+"pile north: [4H,3S,11S,5S,2C,10D]
+&pile north is Attack: 0 - Defence: 22
+$pile south: [13H,5C,8C,10S,12D,11C]
+&pile south is Attack: 43 - Defence: 0
+*Character 0 attack on character 1 failed.
+-Character 1 attack on character 0 succeeded.
+Result: Players 1 and 3 won.
+3hands[0]: [11S,6S,3S,11H,7H,3H,12D,3D,2D,9C,6C,3C]
+7hands[1]: [10S,12H,10H,6H,11D,4D,13C,11C,10C,7C,5C,2C]
+2hands[2]: [13S,9S,5S,4S,2S,9H,4H,2H,13D,8D,7D,4C]
+4hands[3]: [12S,8S,7S,13H,8H,5H,10D,9D,6D,5D,12C,8C]

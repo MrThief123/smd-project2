@@ -1,0 +1,214 @@
+    0: drone.Simulation parameters - time=27-02-2026 11:48:50  seed=30006
+    1: Arrived: drone.Parcel from time 1 addressed to 5 Second Street; Weight: 11 Fragile?: false
+    2: Arrived: drone.Parcel from time 2 addressed to 4 Third Street; Weight: 7 Fragile?: false
+    2: Arrived: drone.Parcel from time 2 addressed to 2 Second Street; Weight: 3 Fragile?: true
+    3: Arrived: drone.Parcel from time 3 addressed to 1 Second Street; Weight: 8 Fragile?: false
+    3: Arrived: drone.Parcel from time 3 addressed to 1 Second Street; Weight: 6 Fragile?: true
+    4: Arrived: drone.Parcel from time 4 addressed to 3 First Street; Weight: 4 Fragile?: false
+    4: Arrived: drone.Parcel from time 4 addressed to 4 First Street; Weight: 3 Fragile?: false
+    6: Arrived: drone.Parcel from time 6 addressed to 1 Third Street; Weight: 12 Fragile?: false
+    6: 1 Out Avenue D1 arrive
+    7: Arrived: drone.Parcel from time 7 addressed to 4 Second Street; Weight: 1 Fragile?: false
+    7: Arrived: drone.Parcel from time 7 addressed to 2 First Street; Weight: 1 Fragile?: false
+    7: 1 Out Avenue D1 depart
+    7: 2 Out Avenue D1 arrive
+    7: 1 Out Avenue D2 arrive
+    8: Arrived: drone.Parcel from time 8 addressed to 1 Second Street; Weight: 10 Fragile?: false
+    8: 2 Out Avenue D1 depart
+    8: 3 Out Avenue D1 arrive
+    8: 1 Out Avenue D2 depart
+    8: 2 Out Avenue D2 arrive
+    8: 1 Out Avenue D3 arrive
+    9: Arrived: drone.Parcel from time 9 addressed to 2 First Street; Weight: 1 Fragile?: true
+    9: Arrived: drone.Parcel from time 9 addressed to 3 Second Street; Weight: 10 Fragile?: false
+    9: Arrived: drone.Parcel from time 9 addressed to 4 First Street; Weight: 3 Fragile?: false
+    9: 3 Out Avenue D1 depart
+    9: 4 Out Avenue D1 arrive
+    9: 2 Out Avenue D2 depart
+    9: 3 Out Avenue D2 arrive
+    9: 1 Out Avenue D3 depart
+    9: 2 Out Avenue D3 arrive
+    9: 1 Out Avenue D4 arrive
+   10: Arrived: drone.Parcel from time 10 addressed to 2 Second Street; Weight: 1 Fragile?: false
+   10: 4 Out Avenue D1 depart
+   10: 5 Out Avenue D1 arrive
+   10: 3 Out Avenue D2 depart
+   10: 4 Out Avenue D2 arrive
+   10: 2 Out Avenue D3 depart
+   10: 3 Out Avenue D3 arrive
+   10: 1 Out Avenue D4 depart
+   10: 2 Out Avenue D4 arrive
+   10: 1 Out Avenue D5 arrive
+   11: 5 Out Avenue D1 depart
+   11: 1 Second Street D1 arrive
+   11: 4 Out Avenue D2 depart
+   11: 5 Out Avenue D2 arrive
+   11: 3 Out Avenue D3 depart
+   11: 4 Out Avenue D3 arrive
+   11: 2 Out Avenue D4 depart
+   11: 3 Out Avenue D4 arrive
+   11: 1 Out Avenue D5 depart
+   11: 2 Out Avenue D5 arrive
+   11: 1 Out Avenue D6 arrive
+   12: 1 Second Street D1 depart
+   12: 3 Second Street D1 arrive
+   12: 5 Out Avenue D2 depart
+   12: 6 Out Avenue D2 arrive
+   12: 4 Out Avenue D3 depart
+   12: 5 Out Avenue D3 arrive
+   12: 3 Out Avenue D4 depart
+   12: 4 Out Avenue D4 arrive
+   12: 2 Out Avenue D5 depart
+   12: 3 Out Avenue D5 arrive
+   12: 1 Out Avenue D6 depart
+   12: 2 Out Avenue D6 arrive
+   13: 3 Second Street D1 depart
+   13: 5 Second Street D1 arrive
+   13: 6 Out Avenue D2 depart
+   13: 7 Out Avenue D2 arrive
+   13: 5 Out Avenue D3 depart
+   13: 1 Second Street D3 arrive
+   13: 4 Out Avenue D4 depart
+   13: 5 Out Avenue D4 arrive
+   13: 3 Out Avenue D5 depart
+   13: 4 Out Avenue D5 arrive
+   13: 2 Out Avenue D6 depart
+   13: 1 First Street D6 arrive
+   14: 5 Second Street D1 startDelivery
+   14: Delivered: drone.Parcel from time 1 addressed to 5 Second Street; Weight: 11 Fragile?: false
+   14: 7 Out Avenue D2 depart
+   14: 8 Out Avenue D2 arrive
+   14: 1 Second Street D3 startDelivery
+   14: Delivered: drone.Parcel from time 2 addressed to 2 Second Street; Weight: 3 Fragile?: true
+   14: 1 First Street D6 depart
+   14: 3 First Street D6 arrive
+   15: 5 Second Street D1 endDelivery
+   15: 8 Out Avenue D2 depart
+   15: 1 Third Street D2 arrive
+   15: 1 Second Street D3 endDelivery
+   15: 3 First Street D6 startDelivery
+   15: Delivered: drone.Parcel from time 4 addressed to 3 First Street; Weight: 4 Fragile?: false
+   16: 5 Second Street D1 depart
+   16: 7 Second Street D1 arrive
+   16: 1 Third Street D2 depart
+   16: 3 Third Street D2 arrive
+   16: 1 Second Street D3 depart
+   16: 3 Second Street D3 arrive
+   16: 5 Out Avenue D4 depart
+   16: 1 Second Street D4 arrive
+   16: 4 Out Avenue D5 depart
+   16: 5 Out Avenue D5 arrive
+   16: 3 First Street D6 endDelivery
+   17: 7 Second Street D1 depart
+   17: 9 Second Street D1 arrive
+   17: 3 Third Street D2 startDelivery
+   17: Delivered: drone.Parcel from time 2 addressed to 4 Third Street; Weight: 7 Fragile?: false
+   17: 3 Second Street D3 depart
+   17: 5 Second Street D3 arrive
+   17: 1 Second Street D4 startDelivery
+   17: Delivered: drone.Parcel from time 3 addressed to 1 Second Street; Weight: 8 Fragile?: false
+   17: 3 First Street D6 depart
+   17: 5 First Street D6 arrive
+   18: 9 Second Street D1 depart
+   18: 5 Back Avenue D1 arrive
+   18: 3 Third Street D2 endDelivery
+   18: 5 Second Street D3 depart
+   18: 7 Second Street D3 arrive
+   18: 1 Second Street D4 endDelivery
+   18: 5 First Street D6 depart
+   18: 7 First Street D6 arrive
+   19: 5 Back Avenue D1 depart
+   19: 4 Back Avenue D1 arrive
+   19: 3 Third Street D2 depart
+   19: 5 Third Street D2 arrive
+   19: 7 Second Street D3 depart
+   19: 9 Second Street D3 arrive
+   19: 1 Second Street D4 depart
+   19: 3 Second Street D4 arrive
+   19: 5 Out Avenue D5 depart
+   19: 1 Second Street D5 arrive
+   19: 7 First Street D6 depart
+   19: 9 First Street D6 arrive
+   20: 4 Back Avenue D1 depart
+   20: 3 Back Avenue D1 arrive
+   20: 5 Third Street D2 depart
+   20: 7 Third Street D2 arrive
+   20: 9 Second Street D3 depart
+   20: 5 Back Avenue D3 arrive
+   20: 3 Second Street D4 depart
+   20: 5 Second Street D4 arrive
+   20: 1 Second Street D5 startDelivery
+   20: Delivered: drone.Parcel from time 3 addressed to 1 Second Street; Weight: 6 Fragile?: true
+   20: 9 First Street D6 depart
+   20: 2 Back Avenue D6 arrive
+   21: 7 Third Street D2 depart
+   21: 9 Third Street D2 arrive
+   21: 5 Back Avenue D3 depart
+   21: 4 Back Avenue D3 arrive
+   21: 5 Second Street D4 depart
+   21: 7 Second Street D4 arrive
+   21: 1 Second Street D5 endDelivery
+   21: 2 Back Avenue D6 depart
+   21: 1 Back Avenue D6 arrive
+   22: 3 Back Avenue D1 depart
+   22: 2 Back Avenue D1 arrive
+   22: 9 Third Street D2 depart
+   22: 8 Back Avenue D2 arrive
+   22: 4 Back Avenue D3 depart
+   22: 3 Back Avenue D3 arrive
+   22: 7 Second Street D4 depart
+   22: 9 Second Street D4 arrive
+   22: 1 Second Street D5 depart
+   22: 3 Second Street D5 arrive
+   22: 1 Back Avenue D6 depart
+   23: 2 Back Avenue D1 depart
+   23: 1 Back Avenue D1 arrive
+   23: 8 Back Avenue D2 depart
+   23: 7 Back Avenue D2 arrive
+   23: 3 Back Avenue D3 depart
+   23: 2 Back Avenue D3 arrive
+   23: 9 Second Street D4 depart
+   23: 5 Back Avenue D4 arrive
+   23: 3 Second Street D5 depart
+   23: 5 Second Street D5 arrive
+   24: 1 Back Avenue D1 depart
+   24: 7 Back Avenue D2 depart
+   24: 6 Back Avenue D2 arrive
+   24: 2 Back Avenue D3 depart
+   24: 1 Back Avenue D3 arrive
+   24: 5 Back Avenue D4 depart
+   24: 4 Back Avenue D4 arrive
+   24: 5 Second Street D5 depart
+   24: 7 Second Street D5 arrive
+   25: 6 Back Avenue D2 depart
+   25: 5 Back Avenue D2 arrive
+   25: 1 Back Avenue D3 depart
+   25: 4 Back Avenue D4 depart
+   25: 3 Back Avenue D4 arrive
+   25: 7 Second Street D5 depart
+   25: 9 Second Street D5 arrive
+   26: 5 Back Avenue D2 depart
+   26: 4 Back Avenue D2 arrive
+   26: 3 Back Avenue D4 depart
+   26: 2 Back Avenue D4 arrive
+   26: 9 Second Street D5 depart
+   26: 5 Back Avenue D5 arrive
+   27: 4 Back Avenue D2 depart
+   27: 3 Back Avenue D2 arrive
+   27: 2 Back Avenue D4 depart
+   27: 1 Back Avenue D4 arrive
+   27: 5 Back Avenue D5 depart
+   27: 4 Back Avenue D5 arrive
+   28: 3 Back Avenue D2 depart
+   28: 2 Back Avenue D2 arrive
+   28: 1 Back Avenue D4 depart
+   28: 4 Back Avenue D5 depart
+   28: 3 Back Avenue D5 arrive
+   29: 2 Back Avenue D2 depart
+   29: 1 Back Avenue D2 arrive
+   29: 3 Back Avenue D5 depart
+   29: 2 Back Avenue D5 arrive
+   30: 1 Back Avenue D2 depart
+   30: 2 Back Avenue D5 depart
+   30: 1 Back Avenue D5 arrive
+   31: 1 Back Avenue D5 depart
